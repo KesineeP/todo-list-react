@@ -3,16 +3,36 @@ import React from 'react'
 function AddToDo() {
     return (
         <div style={styles.container}>
-            <h2>Add To do list</h2>
-            <button>Add</button>
+            <form style={styles.form}>
+                <input style={styles.todoInput}type='text' placeholder='What needs to be done?' />
+                <button style={styles.todoButton} className='todoButton' type='submit'>
+                <i class="fas fa-plus"></i>
+                </button> 
+            </form>
         </div>
     )
 }
 const styles = {
     container: {
+        width: '450px',
+    },
+    form: {
+        width: '100%',
         display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: '10px'
+    },
+    todoInput: {
+        padding: '10px 120px',
+        border: 'solid 2px powderblue',
         
-        alignItems: 'center'
+    },
+    todoButton: {
+        color: 'white',
+        backgroundColor: 'lightblue',
+        border: 'none',
+        fontSize: '31px'
     }
 }
 export default AddToDo;

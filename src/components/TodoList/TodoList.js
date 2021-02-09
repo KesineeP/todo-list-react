@@ -13,9 +13,13 @@ function TodoList() {
 
 const styles = {
     container: { 
-        display: 'flex',
-        backgroundColor: 'lightgray',
-        flexDirection: 'center',
+        display: 'flex', 
+        flexDirection: 'column',
+        padding: '20px',
+        border: '2px solid lightblue',
+        // backgroundImage: 'linear-gradient(to bottom, lightblue, lightyellow)'
+        background: 'white',
+        fontSize: ''
     }
 }
 
