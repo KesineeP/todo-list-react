@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddToDo from '../AddToDo';
 import DisplayToDos from '../DisplayToDos';
 
 function TodoList() {
+    const [database, setDatabase] = useState([]);
     return (
         <div style={styles.container}>
-            <AddToDo />
-            <DisplayToDos />
+            <AddToDo database={database} setDatabase={setDatabase}/>
+            <DisplayToDos database={database} />
         </div>
     )
 }
@@ -19,7 +20,8 @@ const styles = {
         border: '2px solid lightblue',
         // backgroundImage: 'linear-gradient(to bottom, lightblue, lightyellow)'
         background: 'white',
-        fontSize: ''
+        fontSize: '',
+        maxWidth: '450px'
     }
 }
 

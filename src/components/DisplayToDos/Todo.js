@@ -1,18 +1,19 @@
 import React from 'react'
 
-function Todo() {
+function Todo({todo}) {
+
     return (
         <div style={styles.container}>
             <div style={styles.list}>
                 <input type='checkbox'/>
-                <p>Buy New Phone</p>
+                <p>{todo.data}</p>
             </div>
             <div>
                 <button style={styles.button}>
-                    <i class="fas fa-pencil-alt"></i>
+                    <i className="fas fa-pencil-alt"></i>
                 </button>
                 <button style={styles.button}>
-                    <i class="far fa-trash-alt"></i>
+                    <i className="far fa-trash-alt"></i>
                 </button>
             </div>   
         </div>
@@ -22,9 +23,7 @@ const styles ={
     container: {
         display: 'flex',
         alignItems: 'center',
-        width: '450px',
-        display: 'flex',
-        alignItems: 'center',
+        width: '100%',
         justifyContent: 'space-between',
         borderBottom: 'solid lightgrey 1px'
         

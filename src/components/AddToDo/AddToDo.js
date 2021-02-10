@@ -1,12 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function AddToDo() {
+function AddToDo({database, setDatabase}) {
+    const [newTodo, setNewTodo] = useState('');
+    
+    const savingNewTodo = (event) => {
+        event.persist()
+        setNewTodo(event.target.value)
+    }
+    
+    const addTodoToDatabase = (event,newTodo) => {
+        event.preventDefault()
+        setDatabase([...database,{data: newTodo, isChecked: false}])
+    }
+    console.log('newTodo', newTodo);
+    console.log('database', database);
     return (
         <div style={styles.container}>
             <form style={styles.form}>
-                <input style={styles.todoInput}type='text' placeholder='What needs to be done?' />
-                <button style={styles.todoButton} className='todoButton' type='submit'>
-                <i class="fas fa-plus"></i>
+                <input 
+                    style={styles.textInput} 
+                    type='text' 
+                    placeholder='What needs to be done?' 
+                    onChange={(event) => savingNewTodo(event)}
+                />
+                <button 
+                    style={styles.todoButton}  
+                    value='+'
+                    onClick={(event) => addTodoToDatabase(event,newTodo)}
+                >
+                <i className="fas fa-plus"></i>
                 </button> 
             </form>
         </div>
@@ -14,25 +36,27 @@ function AddToDo() {
 }
 const styles = {
     container: {
-        width: '450px',
+        width: '100%',
     },
     form: {
         width: '100%',
         display: 'flex',
-        alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: '10px'
     },
-    todoInput: {
-        padding: '10px 120px',
+    textInput: {
+        width: '240px',
+        padding: '10px 0',
         border: 'solid 2px powderblue',
-        
+        // textAlign: 'left'
     },
     todoButton: {
         color: 'white',
-        backgroundColor: 'lightblue',
+        backgroundColor: '#4e93bd',
         border: 'none',
-        fontSize: '31px'
+        fontSize: '13px',
+        padding: '12px',
+        marginLeft: '5px' 
     }
 }
 export default AddToDo;
