@@ -3,11 +3,11 @@ import RemovedChecked from '../RemoveChecked';
 import Todo from './Todo';
 
 
-function DisplayToDos({database}) {
+function DisplayToDos({database, setDatabase}) {
     
     return (
         <div style={styles.container}>
-            {database.map((item, index) => <Todo todo={item} key={index} />)}
+            {database.map((item, index) => <Todo todo={item} key={index} database={database} setDatabase={setDatabase} />)}
             <RemovedChecked />
         </div>
     )

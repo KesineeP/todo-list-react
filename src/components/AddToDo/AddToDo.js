@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { nanoid } from 'nanoid'
 
 function AddToDo({database, setDatabase}) {
     const [newTodo, setNewTodo] = useState('');
@@ -10,10 +11,10 @@ function AddToDo({database, setDatabase}) {
     
     const addTodoToDatabase = (event,newTodo) => {
         event.preventDefault()
-        setDatabase([...database,{data: newTodo, isChecked: false}])
+        setDatabase([...database,{id: nanoid(), data: newTodo, isChecked: false}])
     }
-    console.log('newTodo', newTodo);
-    console.log('database', database);
+    // console.log('newTodo', newTodo);
+    // console.log('database', database);
     return (
         <div style={styles.container}>
             <form style={styles.form}>
@@ -42,13 +43,14 @@ const styles = {
         width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
-        marginBottom: '10px'
+        marginBottom: '10px',
+        
     },
     textInput: {
         width: '240px',
-        padding: '10px 0',
+        padding: '10px',
         border: 'solid 2px powderblue',
-        // textAlign: 'left'
+        
     },
     todoButton: {
         color: 'white',
