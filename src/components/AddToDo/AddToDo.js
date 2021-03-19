@@ -1,36 +1,42 @@
 import React, { useState } from 'react'
 import { nanoid } from 'nanoid'
 
-function AddToDo({database, setDatabase}) {
+function AddToDo({ database, setDatabase }) {
     const [newTodo, setNewTodo] = useState('');
-    
+
+
     const savingNewTodo = (event) => {
         event.persist()
         setNewTodo(event.target.value)
     }
-    
-    const addTodoToDatabase = (event,newTodo) => {
+    //set input to emty/placeholder
+
+    const addTodoToDatabase = (event, newTodo) => {
         event.preventDefault()
-        setDatabase([...database,{id: nanoid(), data: newTodo, isChecked: false}])
+        setDatabase([...database, { id: nanoid(), data: newTodo, isChecked: false }])
+        setNewTodo('');
     }
+
+
     // console.log('newTodo', newTodo);
     // console.log('database', database);
     return (
         <div style={styles.container}>
             <form style={styles.form}>
-                <input 
-                    style={styles.textInput} 
-                    type='text' 
-                    placeholder='What needs to be done?' 
+                <input
+                    value={newTodo}
+                    style={styles.textInput}
+                    type='textbox'
+                    placeholder='What needs to be done?'
                     onChange={(event) => savingNewTodo(event)}
                 />
-                <button 
-                    style={styles.todoButton}  
+                <button
+                    style={styles.todoButton}
                     value='+'
-                    onClick={(event) => addTodoToDatabase(event,newTodo)}
+                    onClick={(event) => addTodoToDatabase(event, newTodo)}
                 >
-                <i className="fas fa-plus"></i>
-                </button> 
+                    <i className="fas fa-plus" />
+                </button>
             </form>
         </div>
     )
@@ -44,13 +50,13 @@ const styles = {
         display: 'flex',
         justifyContent: 'space-between',
         marginBottom: '10px',
-        
     },
     textInput: {
+        fontSize: '16px',
         width: '240px',
-        padding: '10px',
+        paddingLeft: '10px',
         border: 'solid 2px powderblue',
-        
+
     },
     todoButton: {
         color: 'white',
@@ -58,7 +64,7 @@ const styles = {
         border: 'none',
         fontSize: '13px',
         padding: '12px',
-        marginLeft: '5px' 
+        marginLeft: '5px'
     }
 }
 export default AddToDo;
