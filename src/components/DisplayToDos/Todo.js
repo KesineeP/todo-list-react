@@ -65,7 +65,7 @@ function Todo({ todo, database, setDatabase }) {
         <div style={styles.container}>
             <div style={styles.list}>
                 <input
-                    style={{ margin: '0' }}
+                    style={{ margin: '0', cursor: 'pointer' }}
                     type='checkbox'
                     checked={todo.isChecked}
                     onChange={() => handleChangeCheckbox()} />
@@ -112,7 +112,8 @@ const styles = {
         borderRadius: '5px',
         fontSize: '20px',
         margin: '2px',
-        padding: '5px'
+        padding: '5px',
+        cursor: 'pointer'
     },
     p: {
         paddingLeft: '10px',

@@ -11,7 +11,7 @@ function RemoveCheckedTodos({ database, setDatabase }) {
     return (
         <div style={styles.container}>
             <button style={styles.button} onClick={() => handleRemoveAllChecked()}>
-                <p style={styles.p}>Remove checked tasks</p>
+                <p style={styles.p}>Remove Checked Tasks</p>
                 <i className="fas fa-times" />
             </button>
         </div >
@@ -31,7 +31,8 @@ const styles = {
         padding: '5px 10px',
         color: 'white',
         backgroundColor: '#4e93bd',
-        border: 'none'
+        border: 'none',
+        cursor: 'pointer'
     },
     p: {
         margin: '0',

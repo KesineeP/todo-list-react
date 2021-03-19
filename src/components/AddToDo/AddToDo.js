@@ -31,7 +31,7 @@ function AddToDo({ database, setDatabase }) {
                     onChange={(event) => savingNewTodo(event)}
                 />
                 <button
-                    style={styles.todoButton}
+                    style={styles.addButton}
                     value='+'
                     onClick={(event) => addTodoToDatabase(event, newTodo)}
                 >
@@ -58,13 +58,14 @@ const styles = {
         border: 'solid 2px powderblue',
 
     },
-    todoButton: {
+    addButton: {
         color: 'white',
         backgroundColor: '#4e93bd',
         border: 'none',
         fontSize: '13px',
         padding: '12px',
-        marginLeft: '5px'
+        marginLeft: '5px',
+        cursor: 'pointer'
     }
 }
 export default AddToDo;
