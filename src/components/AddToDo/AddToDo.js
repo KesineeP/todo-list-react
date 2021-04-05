@@ -18,8 +18,8 @@ function AddToDo({ database, setDatabase }) {
     }
 
 
-    // console.log('newTodo', newTodo);
-    // console.log('database', database);
+    console.log('newTodo', newTodo);
+    console.log('database', database);
     return (
         <div style={styles.container}>
             <form style={styles.form}>
@@ -56,7 +56,7 @@ const styles = {
         width: '240px',
         paddingLeft: '10px',
         border: 'solid 2px powderblue',
-
+        outline: 'none'
     },
     addButton: {
         color: 'white',
