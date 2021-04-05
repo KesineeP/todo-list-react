@@ -20,9 +20,13 @@ function TodoList() {
         localStorage.setItem('database', JSON.stringify(database));
     }, [database]);
 
+    const today = new Date();
+    const displayDate = today.toDateString();
+
 
     return (
         <div style={styles.container}>
+            <h5>{displayDate}</h5>
             <AddToDo database={database} setDatabase={setDatabase} />
             <DisplayToDos database={database} setDatabase={setDatabase} />
             <RemoveCheckedTodos database={database} setDatabase={setDatabase} />
@@ -34,7 +38,7 @@ const styles = {
     container: {
         display: 'flex',
         flexDirection: 'column',
-        padding: '20px',
+        padding: ' 5px 20px 20px 20px',
         boxShadow: '2px 2px 5px grey',
         background: 'white',
         fontSize: '',
