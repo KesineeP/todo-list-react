@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddToDo from '../AddToDo';
 import DisplayToDos from '../DisplayToDos';
 import RemoveCheckedTodos from '../RemoveCheckedTodos';
 
 // click delete button
 // that todo will be removed from todo list(database)
-
 function TodoList() {
     const [database, setDatabase] = useState([]);
+
+    useEffect(() => {
+        const database = JSON.parse(localStorage.getItem('database'));
+        if (database) {
+            setDatabase(database);
+        }
+    }, [])
+
+    useEffect(() => {
+        //save database while changing
+        localStorage.setItem('database', JSON.stringify(database));
+    }, [database]);
+
+
     return (
         <div style={styles.container}>
             <AddToDo database={database} setDatabase={setDatabase} />
