@@ -5,7 +5,6 @@ import CSS from "csstype";
 interface Props {
   database: TodoType[];
   setDatabase: Dispatch<SetStateAction<TodoType[]>>;
-  todo: any;
 }
 type TodoType = {
   id: string;
