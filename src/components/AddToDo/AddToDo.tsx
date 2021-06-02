@@ -1,17 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState,Dispatch, SetStateAction} from 'react'
 import { nanoid } from 'nanoid'
 
-function AddToDo({ database, setDatabase }) {
+
+interface Props {
+    database: TodoType[];
+    setDatabase:  Dispatch<SetStateAction<TodoType[]>>;
+}
+type TodoType = {
+    id: string;
+    data: string;
+    isChecked: boolean;
+}
+
+const AddToDo:React.FC<Props> = ({ database, setDatabase }) => {
     const [newTodo, setNewTodo] = useState('');
 
 
-    const savingNewTodo = (event) => {
+    const savingNewTodo = (event:React.ChangeEvent<HTMLInputElement>) => {
         event.persist()
         setNewTodo(event.target.value)
     }
     //set input to emty/placeholder
 
-    const addTodoToDatabase = (event, newTodo) => {
+    const addTodoToDatabase = (event:React.MouseEvent<HTMLButtonElement>, newTodo: string) => {
         event.preventDefault()
         setDatabase([...database, { id: nanoid(), data: newTodo, isChecked: false }])
         setNewTodo('');
