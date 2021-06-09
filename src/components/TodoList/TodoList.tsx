@@ -30,12 +30,42 @@ const TodoList: React.FC = () => {
     localStorage.setItem("database", JSON.stringify(database));
   }, [database]);
 
+  const ordinalDate = (date: number) => {
+    if (date > 3 && date < 21) return "th";
+    switch (date % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  };
   const today = new Date();
-  const displayDate = today.toDateString();
+  const date = today.getDate();
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ][today.getMonth()];
 
   return (
     <div style={styles.container}>
-      <h5>{displayDate}</h5>
+      <h5>
+        {date}
+        <sup>{ordinalDate(date)}</sup> {month}, {today.getFullYear()}
+      </h5>
       <AddToDo database={database} setDatabase={setDatabase} />
       <DisplayToDos database={database} setDatabase={setDatabase} />
       <RemoveCheckedTodos database={database} setDatabase={setDatabase} />
